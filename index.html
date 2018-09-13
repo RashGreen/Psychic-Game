@@ -4,14 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="/Users/rashidgreen/Desktop/UCLA-CodeCamp/Psychic-Game/assets/css/style.css">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+   
     <title>Psychics</title>
 </head>
 <body>
-    <h1>Don't you know I'm Psychic?</h1>
-    
+   <!-- *This was my first attempt to set all of the variables*
+       
+    <h1>Game Of Psychics</h1>
+    <br>
+    <h2>You have 9 attempts to guess what letter I have preselected!,  If you guess write you win nothing. Guess wrong and I'll delete all of your social media!</h2>    
+    <h3>WINS:</h3>
+    <h3>LOSSES:</h3>
+    <h3>GUESSES:</h3>
+    <h3>GUESSES REMAINING:</h3>
+    <br>
+    <h4>Letters you already picked:</h4>-->
+
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">var WINS = 0;</script>
+<script type="text/javascript">
+//scripts above to link to JS, and an alert to get the game started.
+alert("Pick a letter, any letter")
+//I then set up all of the variable that are contained within the game
+var wins = 0;
+var losses = 0;
+var guessesLeft = 9;
+var letterUser = []
+var eachofLetters = null;
+var randomLetter = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+//this function hopefully generates a random letter
+function randomLetter(){
+    var randomLetter = randomLetter[Math.floor(Math.random() * randomLetter.length)];
+    $("input").keypress(function(){
+    alert('You picked ' + letterUser);
+ //this function alters the guessesLeft variable  
+function countGuessesLeft() {
+	document.querySelector("#guessesLeft").innerHTML = "Guesses Left: " + guessesLeft;
+}
+//this will gtrach
+function farUserGuesses() {
+	document.querySelector("#letter").innerHTML = "Your Guesses so far: " + letterUser.join(' ');
+}
+//here I tried to keep track of how many guesses the user has left
+countGuessesLeft();
+
+var restart = function() {
+	guessesLeft = 9;
+	letterUser = [];
+
+} 
+
+//this was an attempt to get the JS program to recognize keystrokes from the user.
+document.onkeyup = function(event) {
+	guessesLeft--;
+
+	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+	letterUser.push(userGuess);
+	countGuessesLeft();
+	farUserGuesses();
+
+	if (userGuess === computerGuess){
+		wins++;
+		document.querySelector("#wins").innerHTML = "Wins: " + wins;
+		restart();
+	} 
+	else if (guessesLeft === 0) {
+		losses++;
+		document.querySelector("#lose").innerHTML = "Loses: " + losses;
+		restart()};
+
+
+$("input").keypress("click", function(){
+    wins +=1;
+;}
+
+
+
+</script>
 </html>
